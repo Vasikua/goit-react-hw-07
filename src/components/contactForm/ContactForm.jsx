@@ -4,7 +4,6 @@ import * as Yup from "yup";
 import { ErrorMessage,Field,Form, Formik } from "formik";
 import { useDispatch } from 'react-redux';
 import { useId } from 'react';
-import { nanoid } from 'nanoid';
 import{addContact} from '../../redux/contactsSlice'
 
  
@@ -20,7 +19,7 @@ export default function ContactForm() {
         const newContAdd = {
         name: values.username.trim(),
         number: values.number,
-        id: nanoid(),
+        
         }
         dispatch(addContact(newContAdd))
         actions.resetForm();
