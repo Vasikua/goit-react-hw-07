@@ -16,12 +16,12 @@ export default function ContactForm() {
     const dispatch = useDispatch();
        
     const addCont = (values, actions) => {
-        const newContAdd = {
+        const newContact = {
         name: values.username.trim(),
         number: values.number,
         
         }
-        dispatch(addContact(newContAdd))
+        dispatch(addContact(newContact))
         actions.resetForm();
 
     }
