@@ -4,10 +4,10 @@ import {deleteContact} from "../../redux/contactsSlice";
 import css from './Contact.module.css';
 
 export default function Contact({data: {id, name, number }}) {
-    // const dispatch = useDispatch();
+     const dispatch = useDispatch();
     const handleDelete = () => {
         console.log(id);
-        // dispatch(deleteContact(id));
+        dispatch(deleteContact(id));
     }
     return (
         <>
