@@ -1,21 +1,39 @@
 import axios from "axios";
-import { fetchingInProgres, fetchingSuccess, fetchingError } from "./contactsSlice";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import Contact from "../components/contact/Contact";
 
-
-axios.defaults.baseURL = "https://663adac4fee6744a6e9f8893.mockapi.io/";
+axios.defaults.baseURL = "https://664015a3a7500fcf1a9d0aac.mockapi.io";
 
 export const fetchContacts = createAsyncThunk("contacts/fetchAll",
-    async () => {
- try {
-        dispatch(fetchingInProgres())
-        const response = await axios.get("contacts")
-        dispatch(fetchingSuccess(response.deta))
-    } catch (error) {
-        dispatch(fetchingError(error.message))
-    }   
+    async (_, thunkAPI) => {
+        try {
+            const response = await axios.get("/contacts")
+            
+            return response.data;
+            
+        } catch (error) {
+            console.log('error');
+            return thunkAPI.rejectWithValue(error.message);
+            }   
 })
-// fetchContacts - одержання масиву контактів (метод GET) запитом. Базовий тип екшену це рядок "contacts/fetchAll".
-// addContact - додавання нового контакту (метод POST). Базовий тип екшену це рядок "contacts/addContact".
-// deleteContact - видалення контакту по ID (метод DELETE). Базовий тип екшену це рядок "contacts/deleteContact".
+
+export const addContact = createAsyncThunk("contacts/addContact", 
+    async (newContact, thunkAPI) => {
+            try {
+                const response = await axios.post("/contacts", newContact)
+                return response.data
+            } catch (error) {
+                return thunkAPI.rejectWithValue(error.message);
+            }
+        })
+
+export const deleteContact = createAsyncThunk("contacts/deleteContact",
+    async(id, thunkAPI) => {
+        try {
+            const response = await axios.delete(`/contacts/${id}`)
+            return response.data
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.message)
+        }
+});       
+
+
