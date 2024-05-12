@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { ErrorMessage,Field,Form, Formik } from "formik";
 import { useDispatch } from 'react-redux';
 import { useId } from 'react';
-import{addContact} from '../../redux/contactsSlice'
+import{addContact} from '../../redux/contactsOps'
 
  
 const UserSchema =Yup.object().shape({

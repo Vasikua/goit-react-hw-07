@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from './redux/contactsOps'
-import { getContacts, getError, getIsLoading } from './redux/selectors';
+import { selectContacts, selectError, selectIsLoading } from './redux/selectors';
 import ContactForm from './components/contactForm/ContactForm';
 import ContactList from './components/contactList/ContactList';
 import SearchBox from './components/searchBox/SearchBox';
@@ -10,11 +10,13 @@ import { Layout } from './components/layout/Layout';
 export default function App() {
 
   const dispatch = useDispatch();
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
-    const items = useSelector(getContacts)  
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+  const items = useSelector(selectContacts)  
+ 
   useEffect(() => {
     dispatch(fetchContacts());
+    
   },[dispatch])
   
   return (
@@ -22,9 +24,10 @@ export default function App() {
       <h1 className='title'>Phonebook</h1>
       <ContactForm/>
       <SearchBox />
-      {!error && isLoading && <p>Contacts is loading...</p>}
-    {items.lenght>0 && <ContactList/>}
-  </Layout>
+      {error && <p>Error: {error}</p>}
+      {isLoading && <p>Contacts is loading...</p>}
+      {items.length > 0 && <ContactList />}
+    </Layout>
   )                                   
 
 

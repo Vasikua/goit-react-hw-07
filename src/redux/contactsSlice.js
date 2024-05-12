@@ -20,29 +20,29 @@ const contactsSlice = createSlice({
     builder
       .addCase(fetchContacts.pending, handlePending)
       .addCase(fetchContacts.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        state.items = action.payload; 
+                state.isLoading = false;
+                state.error = null;
+                state.items = action.payload; 
        })
       .addCase(fetchContacts.rejected, handleRejected)
 
 
       .addCase(addContact.pending, handlePending)
       .addCase(addContact.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        state.items = action.payload;
+                state.isLoading = false;
+                state.error = null;
+                state.items = action.payload;
       })
       .addCase(addContact.rejected, handleRejected)
 
 
       .addCase(deleteContact.pending, handlePending)
       .addCase(deleteContact.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        const index = state.items.findIndex(contact => contact.id === action.payload.id);
-        state.items.splice(index, 1);
-      })
+                state.isLoading = false;
+                state.error = null;
+                const index = state.items.findIndex(contact => contact.id === action.payload.id);
+                state.items = state.items.filter((_, idx) => idx !== index);
+              })
       .addCase(deleteContact.rejected, handleRejected)
   }
 });
