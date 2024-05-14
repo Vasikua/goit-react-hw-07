@@ -26,7 +26,7 @@ export default function App() {
       <SearchBox />
       {error && <p>Error: {error}</p>}
       {isLoading && <p>Contacts is loading...</p>}
-      {items.length > 0 && <ContactList />}
+      {items.length > 0 && ( <ContactList />)}
     </Layout>
   )                                   
 
