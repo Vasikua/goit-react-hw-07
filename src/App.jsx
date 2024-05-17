@@ -12,13 +12,12 @@ export default function App() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
-  const items = useSelector(selectContacts)  
- 
+  const items = useSelector(selectContacts);
   useEffect(() => {
     dispatch(fetchContacts());
     
   },[dispatch])
-  
+
   return (
     <Layout>
       <h1 className='title'>Phonebook</h1>
@@ -26,7 +25,7 @@ export default function App() {
       <SearchBox />
       {error && <p>Error: {error}</p>}
       {isLoading && <p>Contacts is loading...</p>}
-      {items.length > 0 && ( <ContactList />)}
+      {items.length > 0 && <ContactList/>}
     </Layout>
   )                                   
 
