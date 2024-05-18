@@ -19,9 +19,10 @@ export default function ContactForm() {
         const newContact = {
         name: values.username.trim(),
         number: values.number,
-        
+            
         }
-        dispatch(addContact(newContact))
+        dispatch(addContact(newContact));
+        console.log("contact add");
         actions.resetForm();
 
     }
