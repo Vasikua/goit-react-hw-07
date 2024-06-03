@@ -7,6 +7,7 @@ import ContactList from './components/contactList/ContactList';
 import SearchBox from './components/searchBox/SearchBox';
 import { Layout } from './components/layout/Layout';
 
+
 export default function App() {
 
   const dispatch = useDispatch();
@@ -20,9 +21,11 @@ export default function App() {
 
   return (
     <Layout>
-      <h1 className='title'>Phonebook</h1>
-      <ContactForm/>
-      <SearchBox />
+      <h1 className="title">Phonebook </h1>
+      <div className="tools">
+      <ContactForm />
+        <SearchBox />
+        </div>
       {error && <p>Error: {error}</p>}
       {isLoading && <p>Contacts is loading...</p>}
       {items.length > 0 && <ContactList/>}

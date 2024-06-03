@@ -9,24 +9,24 @@ export default function Contact({data: {id, name, number }}) {
           dispatch(deleteContact(id));
     }
     return (
-        <>
-        <div className={css.container}>    
-        <div className={css.contact}>
-            <FaUser  size = {20}/>
-            <p className={css.text}>{name}</p>
-        </div>
-        <div className={css.contact}>
-            <FaPhoneAlt size={20}/>
-            <p className={css.text}>{number}</p>
-        </div>
-        </div>
-                
-        <button
-                className={css.deleteBtn}
-                onClick={handleDelete}>
-            Delete
-        </button>
-    </>
+        <div className={css.wrapper}>
+                <div className={css.container}>    
+                <div className={css.contact}>
+                    <FaUser  size = {20}/>
+                    <p className={css.text}>{name}</p>
+                </div>
+                <div className={css.contact}>
+                    <FaPhoneAlt size={20}/>
+                    <p className={css.text}>{number}</p>
+                </div>
+                </div>
+                        
+                <button
+                        className={css.deleteBtn}
+                        onClick={handleDelete}>
+                    Delete
+                </button>
+    </div>
     )
 
     

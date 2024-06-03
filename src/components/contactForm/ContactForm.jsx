@@ -40,12 +40,12 @@ export default function ContactForm() {
             <Form className={css.form}>
                 <div className={css.group}>
                     <label htmlFor={usernameId}>Name</label>
-                    <Field type="text" name="username" id={usernameId} />
+                    <Field className={css.input} type="text" name="username" id={usernameId} />
                     <ErrorMessage name="username" component={"span"}/>
                 </div>
                 <div className={css.group}>
                     <label htmlFor={numberId} >number</label>
-                    <Field type="number" name="number" id={numberId} />
+                    <Field className={css.input} type="number" name="number" id={numberId} />
                     <ErrorMessage name="number" component={"span"}/>
                 </div>
                 <button className={css.submit} type='submit'>Add contact</button>
